@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Service;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 
-class DashboardAdminController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +15,7 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
-        return view('dashboard', [
-            'title' => 'Home Dashboard',
-        ]);
+        //
     }
 
     /**
@@ -31,10 +31,10 @@ class DashboardAdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreServiceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DashboardAdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service)
     {
         //
     }
@@ -53,10 +53,10 @@ class DashboardAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
         //
     }
@@ -64,11 +64,11 @@ class DashboardAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateServiceRequest  $request
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         //
     }
@@ -76,10 +76,10 @@ class DashboardAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
         //
     }

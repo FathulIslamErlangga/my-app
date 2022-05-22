@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AirplaneController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Models\Airplane;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardAdminController::class, 'index']);
+Route::resource('/list-airplane', AirplaneController::class);
