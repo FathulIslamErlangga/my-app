@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AirplaneController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Models\Airplane;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardAdminController::class, 'index']);
 Route::resource('/list-airplane', AirplaneController::class);
+Route::resource('/list-items', ItemController::class);
+Route::resource('/list-service', ServiceController::class);

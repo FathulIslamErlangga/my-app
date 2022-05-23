@@ -20,7 +20,8 @@ class AirplaneSeeder extends Seeder
             'slug' => 'Airbus',
             'datemanufacture' => 'JUN-2015',
             'name' => 'PK-GME',
-            'category_id' => 1
+            'category_id' => 1,
+            'service_id' => 1
         ]);
         Airplane::create([
             'serialnumber' => 'M11461',
@@ -28,7 +29,8 @@ class AirplaneSeeder extends Seeder
             'slug' => 'Airbus-1',
             'datemanufacture' => 'APR-2015',
             'name' => 'PK-GMJ',
-            'category_id' => 2
+            'category_id' => 2,
+            'service_id' => 2,
         ]);
     }
 }

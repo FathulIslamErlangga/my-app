@@ -17,8 +17,6 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->text('description');
             $table->date('deadline');
-            $table->foreignId('airplane_id');
-            $table->foreignId('item_id');
             $table->timestamps();
         });
     }

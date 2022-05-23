@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Airplane;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreAirplaneRequest;
 use App\Http\Requests\UpdateAirplaneRequest;
 use App\Models\Category;
+use App\Models\Service;
 
 class AirplaneController extends Controller
 {
@@ -33,7 +33,8 @@ class AirplaneController extends Controller
     {
         return view('airplane.create', [
             'title' => 'add plane',
-            'data' => Category::all()
+            'data' => Category::all(),
+            'services' => Service::all()
         ]);
     }
 
@@ -52,7 +53,7 @@ class AirplaneController extends Controller
             'datemanufacture' => 'required|max:255',
             'slug' => 'required|max:255',
             'category_id' => 'required',
-            // 'activity_id' => 'required',            
+            'service_id' => 'required',
 
         ]);
         Airplane::create($validatedData);

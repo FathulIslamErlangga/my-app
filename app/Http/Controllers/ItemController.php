@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use App\Http\Requests\StoreItemRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateItemRequest;
+use App\Models\Airplane;
 
 class ItemController extends Controller
 {
@@ -16,6 +17,10 @@ class ItemController extends Controller
     public function index()
     {
         //
+        return view('items.index', [
+            'title' => 'list Item',
+            'items' => Item::with('airplane')->get()
+        ]);
     }
 
     /**
@@ -25,6 +30,10 @@ class ItemController extends Controller
      */
     public function create()
     {
+        return view('items.create', [
+            'title' => 'add spare part',
+            'items' => Airplane::all()
+        ]);
         //
     }
 
@@ -34,9 +43,16 @@ class ItemController extends Controller
      * @param  \App\Http\Requests\StoreItemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreItemRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'kode' => 'required|max:255',
+            'qty' => 'required|integer',
+            'airplane_id' => 'required',
+        ]);
+        Item::create($validatedData);
+        return redirect()->route('list-items.index');
     }
 
     /**

@@ -21,6 +21,7 @@ class CreateAirplanesTable extends Migration
             $table->string('datemanufacture');
             $table->string('name');
             $table->foreignId('category_id');
+            $table->foreignId('service_id');
 
             $table->timestamps();
         });

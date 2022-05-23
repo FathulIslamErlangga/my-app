@@ -22,6 +22,16 @@
                         </select>
                     </div>
                 </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-select">Diagnosa</label>
+                    <div class="uk-form-controls">
+                        <select class="uk-select" id="form-stacked-select" name="service_id">
+                            @foreach ($services as $item)
+                                <option value="{{ $item->id }}">{{ $item->description }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="serialnumber" class="form-control-label">serial number</label>
                     <input type="text" name="serialnumber" class="form-control @error('serialnumber') is-invalid @enderror" value="{{ old('serialnumber') }}">

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Airplane;
 
 class ServiceController extends Controller
 {
@@ -15,6 +16,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        return view('service.index', [
+            'title' => 'list service',
+            'services' => Service::with(['airplane.items'])->get()
+        ]);
         //
     }
 
@@ -26,6 +31,10 @@ class ServiceController extends Controller
     public function create()
     {
         //
+        return view('service.create', [
+            'title' => 'add service',
+
+        ]);
     }
 
     /**
@@ -34,8 +43,15 @@ class ServiceController extends Controller
      * @param  \App\Http\Requests\StoreServiceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
+        $validatedata = $request->validate([
+            'description' => 'required|max:255',
+            'deadline' => 'date'
+
+        ]);
+        Service::create($validatedata);
+        return redirect()->route('list-service.index');
         //
     }
 

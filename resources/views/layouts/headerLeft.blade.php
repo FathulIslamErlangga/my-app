@@ -3,7 +3,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="">
-                    <a href="/dashboard-admin"><i class
+                    <a href="/"><i class
                         ="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
                 <li class="menu-title">Place Stay</li><!-- /.menu-title -->
@@ -14,25 +14,20 @@
                     <a href="{{ route('list-airplane.create') }}"> <i class="menu-icon fa fa-plus"></i>Add Airplane</a>
                 </li>
 
-                <li class="menu-title">Gallery</li><!-- /.menu-title -->
-                <li class="">
-                    <a href=""> <i class="menu-icon fa fa-list"></i>List Galleries</a>
+                <li class="menu-title">Spare Part</li><!-- /.menu-title -->
+                <li class="{{ ($title === 'list Item') ? 'active' :'' }}">
+                    <a href="{{ route('list-items.index') }}"> <i class="menu-icon fa fa-list"></i>List Spare Part</a>
                 </li>
-                <li class="">
-                    <a href=""> <i class="menu-icon fa fa-plus"></i>Add galleries</a>
-                </li>
-
-                <li class="menu-title">activity</li><!-- /.menu-title -->
-                <li class="">
-                    <a href=""> <i class="menu-icon fa fa-list"></i>List activities</a>
-                </li>
-                <li class="">
-                    <a href=""> <i class="menu-icon fa fa-plus"></i>Add Activity</a>
+                <li class="{{ ($title === 'add spare part') ? 'active':'' }}">
+                    <a href="{{ route('list-items.create') }}"> <i class="menu-icon fa fa-plus"></i>Add Spare Part</a>
                 </li>
 
-                <li class="menu-title">Transaksi</li><!-- /.menu-title -->
-                <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>List Transaksi</a>
+                <li class="menu-title">service</li><!-- /.menu-title -->
+                <li class="{{ ($title === 'list service') }}">
+                    <a href="{{ route('list-service.index') }}"> <i class="menu-icon fa fa-list"></i>List Service</a>
+                </li>
+                <li class="{{ ($title === 'add service') }}">
+                    <a href="{{ route('list-service.create') }}"> <i class="menu-icon fa fa-plus"></i>Add Service</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

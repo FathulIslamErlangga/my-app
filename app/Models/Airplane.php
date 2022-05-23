@@ -14,4 +14,12 @@ class Airplane extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'airplane_id');
+    }
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id');
+    }
 }
