@@ -186,7 +186,7 @@ Googel Fonts  */
   background: #1da1f2; }
 
 .bg-facebook {
-  background: #3b5998; }
+  background: #283c68; }
 
 .bg-instagram {
   background: #833ab4; }
@@ -581,7 +581,7 @@ aside.left-panel {
   margin-left: 83px; }
 
 .navbar {
-  background: #fff;
+  background: rgb(240, 240, 240);
   border-radius: 0;
   border: none;
   display: inline-block;
@@ -592,7 +592,8 @@ aside.left-panel {
     float: left;
     padding: 0;
     padding-bottom: 50px; }
-  .navbar .menu-title {
+    .navbar .menu-title {
+    border-top: 1px solid #181818;
     color: #41434d;
     clear: both;
     display: block;
@@ -881,6 +882,7 @@ aside.left-panel {
   background-color: #fff;
   padding: 0 1.25em 0 0; }
   .right-panel .navbar-header > a {
+    
     display: inline-block; }
 .right-panel .navbar-brand {
   line-height: 42px; }
@@ -900,7 +902,7 @@ header.fixed-top {
 
 .menutoggle {
   background-color: transparent;
-  color: #99abb4 !important;
+  color: #0aa4f1 !important;
   cursor: pointer;
   font-size: 1em;
   height: 40px;

@@ -8,6 +8,7 @@
         <div class="card-body card-block">
             <form action="{{ route('list-service.store') }}" method="post">
                 @csrf
+                
                 <div class="form-group">
                     <label for="description" class="form-control-label">Diagnosa</label>
                     <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}">

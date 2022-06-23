@@ -1,7 +1,7 @@
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">GMF<span>Aeroasia</span></a>
+            <a class="navbar-brand" href="/"><img src="/assets/dashboard/images/logogmf.jpg" alt="" style="width: 50px; margin-top: -15px;">GMF<span>Aeroasia</span></a>
             <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
             <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
         </div>
@@ -16,10 +16,10 @@
 
                 <div class="user-menu dropdown-menu">
                     <ul><li>Izzat ali</li></ul>
-                    {{-- <form action="/dashboard-admin/logout" method="post">
+                    <form action="/dashboard-admin/logout" method="post">
                         @csrf
                         <button type="submit" class="nav-link dropdown-item"><i class="fa fa-power -off"></i>Logout</button>
-                    </form> --}}
+                    </form>
                 </div>
             </div>
 

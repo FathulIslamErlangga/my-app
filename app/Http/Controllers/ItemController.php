@@ -16,10 +16,15 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::with('airplane');
+        if (request('search')) {
+            $items->where('name', 'like', '%' . request('search') . '%');
+            // ->orWhere('airplane_id', 'like', '%' .  request('search') . '%');
+        }
+        // dd($a->load('airplane'));
         return view('items.index', [
             'title' => 'list Item',
-            'items' => Item::with('airplane')->get()
+            'items' => $items->paginate(3)
         ]);
     }
 
@@ -72,8 +77,14 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
+        $items = Item::with('airplane')->findOrFail($id);
+        return view('items.edit', [
+            'title' => 'Edit Items',
+            'items' => $items,
+            'airplane' => Airplane::all()
+        ]);
         //
     }
 
@@ -84,8 +95,18 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateItemRequest $request, Item $item)
+    public function update(Request $request, $id)
     {
+        $items = Item::with('airplane')->findOrFail($id);
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'kode' => 'required|max:255',
+            'qty' => 'required|integer',
+            'airplane_id' => 'required',
+        ]);
+        $items->where('id', $items->id)
+            ->update($validatedData);
+        return redirect()->route('list-items.index');
         //
     }
 
@@ -95,8 +116,11 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
         //
+        $items = Item::findOrFail($id);
+        $items->delete();
+        return redirect()->route('list-items.index');
     }
 }

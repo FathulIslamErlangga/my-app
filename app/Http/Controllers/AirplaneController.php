@@ -17,10 +17,16 @@ class AirplaneController extends Controller
      */
     public function index()
     {
+        $items = Airplane::latest();
+
+        if (request('search')) {
+            $items->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('serialnumber', 'like', '%' . request('search') . '%');
+        }
         // dd(Airplane::with('category')->get());
         return view('airplane.index', [
             'title' => 'list Airplane',
-            'data' => Airplane::all()
+            'data' => $items->paginate(3)->withQueryString()
         ]);
     }
 
@@ -77,9 +83,17 @@ class AirplaneController extends Controller
      * @param  \App\Models\Airplane  $airplane
      * @return \Illuminate\Http\Response
      */
-    public function edit(Airplane $airplane)
+    public function edit($id)
     {
-        //
+        $items = Airplane::findOrFail($id);
+        // dd($items);
+
+        return view('airplane.edit', [
+            'title' => 'Update Airplane',
+            'items' => $items,
+            'categories' => Category::all(),
+            'services' => Service::all()
+        ]);
     }
 
     /**
@@ -89,9 +103,26 @@ class AirplaneController extends Controller
      * @param  \App\Models\Airplane  $airplane
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAirplaneRequest $request, Airplane $airplane)
+    public function update(Request $request, $id)
     {
-        //
+        $items = Airplane::findOrFail($id);
+        $rules = [
+            'name' => 'required|max:255',
+            'serialnumber' => 'required|max:255',
+            'partnumber' => 'required|max:255',
+            'datemanufacture' => 'required|max:255',
+            'category_id' => 'required',
+            'service_id' => 'required',
+
+        ];
+        if ($request->slug != $items->slug) {
+            $rules['slug'] = 'required|max:255';
+        }
+        $validatedData = $request->validate($rules);
+        $items->where('id', $items->id)
+            ->update($validatedData);
+        // $airplane->findOrFail($id);
+        return redirect()->route('list-airplane.index');
     }
 
     /**
@@ -100,8 +131,10 @@ class AirplaneController extends Controller
      * @param  \App\Models\Airplane  $airplane
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Airplane $airplane)
+    public function destroy($id)
     {
-        //
+        $items = Airplane::findOrFail($id);
+        $items->delete();
+        return redirect()->route('list-airplane.index');
     }
 }

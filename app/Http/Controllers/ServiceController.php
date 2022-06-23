@@ -14,11 +14,18 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $items = Service::with(['airplane.items']);
+        $fromdate = $request->input('fromdate');
+        // $todate = $request->input('todate');
+        $items->where('deadline', 'like', '%' . $fromdate . '%');
+        // if(request('search')){
+        //     $items->where('');
+        // }
         return view('service.index', [
             'title' => 'list service',
-            'services' => Service::with(['airplane.items'])->get()
+            'services' => $items->paginate(3)
         ]);
         //
     }
@@ -72,8 +79,13 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
+        $items = Service::findOrFail($id);
+        return view('service.edit', [
+            'title' => 'update service',
+            'items' => $items
+        ]);
         //
     }
 
@@ -84,8 +96,16 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(Request $request, $id)
     {
+        $items = Service::findOrFail($id);
+        $validatedata = $request->validate([
+            'description' => 'required|max:255',
+            'deadline' => 'date'
+        ]);
+        $items->where('id', $items->id)
+            ->update($validatedata);
+        return redirect()->route('list-service.index');
         //
     }
 
@@ -95,8 +115,11 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
+        $items = Service::findOrFail($id);
+        $items->delete();
         //
+        return redirect()->route('list-service.index');
     }
 }

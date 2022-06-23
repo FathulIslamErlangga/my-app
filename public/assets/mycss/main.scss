@@ -1,0 +1,73 @@
+header.header-auth{
+    width: 100%;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    margin-bottom: 70px;
+    .navbar{
+        height: 70px;
+        .navbar-brand{
+            // position: relative;
+            text-decoration: none;
+            font-family: 'poppins';
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 39px;
+            text-transform: capitalize;
+            color: #4e5a8d;
+
+            span{
+                color:#152C5B;
+            }
+        }
+    }
+}
+
+section.form-login{
+    .content-login{
+        padding-top: 100px;
+        .card{
+            border-radius: 5px;
+            .card-body {
+            form {
+                input.uk-input{
+                border-radius: 6px;
+                }
+                .btn-login{
+                    border: 1px solid rgb(185, 184, 184);
+                    background-color: #3252DF;
+                    color: white;
+                    width: 6rem;
+                    margin-left: 4.2rem;
+                    &:hover{
+                        box-shadow: 0px 8px 15px rgba(#152C5B, 0.3);
+                    }
+                }
+             }
+            }
+        }
+    }
+}
+section.form-register{
+    .content-register{
+        padding-top: 70px;
+        .card{
+            border-radius: 5px;
+            .card-body {
+            form {
+                input.uk-input{
+                border-radius: 6px;
+                }
+                .btn-register{
+                    border: 1px solid rgb(185, 184, 184);
+                    background-color: #3252DF;
+                    color: white;
+                    width: 6rem;
+                    margin-left: 4.2rem;
+                    &:hover{
+                        box-shadow: 0px 8px 15px rgba(#152C5B, 0.3);
+                    }
+                }
+             }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+header.header-auth {
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 70px;
+}
+
+header.header-auth .navbar {
+  height: 70px;
+}
+
+header.header-auth .navbar .navbar-brand {
+  text-decoration: none;
+  font-family: 'poppins';
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #3252DF;
+}
+
+header.header-auth .navbar .navbar-brand span {
+  color: #152C5B;
+}
+
+section.form-login .content-login {
+  padding-top: 100px;
+}
+
+section.form-login .content-login .card {
+  border-radius: 5px;
+}
+
+section.form-login .content-login .card .card-body form input.uk-input {
+  border-radius: 6px;
+}
+
+section.form-login .content-login .card .card-body form .btn-login {
+  border: 1px solid #b9b8b8;
+  background-color: #3252DF;
+  color: white;
+  width: 6rem;
+  margin-left: 4.2rem;
+}
+
+section.form-login .content-login .card .card-body form .btn-login:hover {
+  -webkit-box-shadow: 0px 8px 15px rgba(21, 44, 91, 0.3);
+          box-shadow: 0px 8px 15px rgba(21, 44, 91, 0.3);
+}
+
+section.form-register .content-register {
+  padding-top: 70px;
+}
+
+section.form-register .content-register .card {
+  border-radius: 5px;
+}
+
+section.form-register .content-register .card .card-body form input.uk-input {
+  border-radius: 6px;
+}
+
+section.form-register .content-register .card .card-body form .btn-register {
+  border: 1px solid #b9b8b8;
+  background-color: #3252DF;
+  color: white;
+  width: 6rem;
+  margin-left: 4.2rem;
+}
+
+section.form-register .content-register .card .card-body form .btn-register:hover {
+  -webkit-box-shadow: 0px 8px 15px rgba(21, 44, 91, 0.3);
+          box-shadow: 0px 8px 15px rgba(21, 44, 91, 0.3);
+}
+/*# sourceMappingURL=main.css.map */
